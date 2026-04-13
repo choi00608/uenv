@@ -25,11 +25,11 @@ GitHub 저장소 링크를 이용해 운영체제 터미널 환경의 전역(Glo
 
 ```bash
 # Github를 통해 파이썬 전역(Global) 환경에 바로 설치 (추천)
-$ pip install git+https://github.com/choi00608/virtual_env_manager.git
+$ pip install git+https://github.com/choi00608/uenv.git
 
 # (참고용) 로컬 소스코드를 클론받아 개발모드로 설치할 경우:
-# $ git clone https://github.com/choi00608/virtual_env_manager.git
-# $ cd virtual_env_manager
+# $ git clone https://github.com/choi00608/uenv.git
+# $ cd uenv
 # $ pip install -e .
 ```
 
