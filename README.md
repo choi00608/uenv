@@ -1,4 +1,4 @@
-# 🌿 uenv (Unified Python Environment Manager) - `v1.3.2`
+# 🌿 uenv (Unified Python Environment Manager) - `v1.3.3`
 
 `uenv`는 파이썬 작업 시 겪는 가상환경 파편화 문제를 해결하기 위해 설계된 **통합 가상환경 관리 및 생성 도구**입니다.
 
@@ -64,6 +64,9 @@ $ uenv delete
 - 파이썬 3.9 이상의 환경을 권장합니다.
 
 ## 📝 버전 히스토리 (Version History)
+
+### `v1.3.3`
+- **Conda 프롬프트 스태킹(중첩) 방지:** `uv` 또는 `venv` 백엔드로 가상환경 진입(activate) 시 터미널에 사용자 계정의 기존 Conda 환경(`base`)과 새로운 가상환경 프롬프트가 중첩되어 켜지는 버그를 해결했습니다. 진입 전 기존 Conda 환경을 안전하게 `deactivate` 한 뒤 진입하도록 수정되었습니다.
 
 ### `v1.3.2` (2026-04-10)
 - **Conda 오류 처리 개선:** Conda 환경 생성 시 이용 약관(ToS) 동의가 필요한 상황(`CondaToSNonInteractiveError`)을 감지하여 사용자에게 명확한 조치 방법을 안내하도록 개선했습니다.

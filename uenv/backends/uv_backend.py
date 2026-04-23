@@ -100,6 +100,6 @@ class UvBackend(BackendBase):
         # _spawn_shell을 사용하여 원래의 프롬프트(.bashrc, .zshrc) 로드 후 
         # 가상환경 프롬프트를 덮어씌웁니다.
         cmd = f"source {activate_script}"
-        return self._spawn_shell(cmd)
+        return self._spawn_shell(cmd, disable_conda=True)
 
 

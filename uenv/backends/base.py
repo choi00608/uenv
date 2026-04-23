@@ -28,7 +28,7 @@ class BackendBase(abc.ABC):
         """
         pass
 
-    def _spawn_shell(self, activate_cmd: str) -> bool:
+    def _spawn_shell(self, activate_cmd: str, disable_conda: bool = False) -> bool:
         """가상환경 프롬프트를 유지하면서 서브쉘을 띄우는 공통 로직입니다."""
         import os
         import subprocess
@@ -49,6 +49,8 @@ class BackendBase(abc.ABC):
                     with open(zshrc_path, "w") as f:
                         if user_zshrc.exists():
                             f.write(f"source {user_zshrc}\n")
+                        if disable_conda:
+                            f.write('while [ -n "$CONDA_DEFAULT_ENV" ]; do conda deactivate 2>/dev/null || break; done\n')
                         f.write(f"{activate_cmd}\n")
                     
                     env = os.environ.copy()
@@ -61,6 +63,8 @@ class BackendBase(abc.ABC):
                     with open(bashrc_path, "w") as f:
                         if user_bashrc.exists():
                             f.write(f"source {user_bashrc}\n")
+                        if disable_conda:
+                            f.write('while [ -n "$CONDA_DEFAULT_ENV" ]; do conda deactivate 2>/dev/null || break; done\n')
                         f.write(f"{activate_cmd}\n")
                         
                     subprocess.run([shell, "--rcfile", str(bashrc_path), "-i"])

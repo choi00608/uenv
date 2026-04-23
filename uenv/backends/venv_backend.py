@@ -106,6 +106,6 @@ class VenvBackend(BackendBase):
 
         # _spawn_shell을 사용하여 프롬프트가 유지되도록 우회 실행
         cmd = f"source {activate_script}"
-        return self._spawn_shell(cmd)
+        return self._spawn_shell(cmd, disable_conda=True)
 
 
